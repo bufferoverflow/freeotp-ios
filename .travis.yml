@@ -1,3 +1,8 @@
 os: osx
 language: objective-c
 script: xcodebuild -project FreeOTP.xcodeproj CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+before_install:
+  - brew update
+  - brew install carthage
+install:
+  - carthage update
