@@ -1,2 +1,2 @@
-github "norio-nomura/Base32"
+github "norio-nomura/Base32" ~> 0.4
 github "evgenyneu/moa" ~> 2.0
