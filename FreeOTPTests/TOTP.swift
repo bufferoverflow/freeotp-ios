@@ -28,8 +28,8 @@ class TOTP: XCTestCase {
         let code: String
     }
 
-    func sec(str: String) -> NSData {
-        return str.dataUsingEncoding(NSUTF8StringEncoding)!
+    func sec(_ str: String) -> Data {
+        return str.data(using: String.Encoding.utf8)!
     }
 
     func testSHA1() {
@@ -42,7 +42,7 @@ class TOTP: XCTestCase {
             TestData(time: 20000000000, code: "65353130"),
         ]
 
-        let urlc = NSURLComponents(string: "otpauth://hotp/foo?secret=GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ&algorithm=SHA1&digits=8")
+        let urlc = URLComponents(string: "otpauth://hotp/foo?secret=GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ&algorithm=SHA1&digits=8")
         XCTAssertNotNil(urlc)
 
         var otp = OTP(urlc: urlc!)
@@ -72,7 +72,7 @@ class TOTP: XCTestCase {
             TestData(time: 20000000000, code: "77737706"),
         ]
 
-        let urlc = NSURLComponents(string: "otpauth://hotp/foo?secret=GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZA====&algorithm=SHA256&digits=8")
+        let urlc = URLComponents(string: "otpauth://hotp/foo?secret=GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZA====&algorithm=SHA256&digits=8")
         XCTAssertNotNil(urlc)
 
         var otp = OTP(urlc: urlc!)
@@ -102,7 +102,7 @@ class TOTP: XCTestCase {
             TestData(time: 20000000000, code: "47863826"),
         ]
 
-        let urlc = NSURLComponents(string: "otpauth://hotp/foo?secret=GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZDGNA=&algorithm=SHA512&digits=8")
+        let urlc = URLComponents(string: "otpauth://hotp/foo?secret=GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQGEZDGNA=&algorithm=SHA512&digits=8")
         XCTAssertNotNil(urlc)
 
         var otp = OTP(urlc: urlc!)

@@ -37,7 +37,7 @@ class HOTP: XCTestCase {
             "520489"
         ]
 
-        let urlc = NSURLComponents(string: "otpauth://hotp/foo?secret=GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ&algorithm=SHA1&digits=6")
+        let urlc = URLComponents(string: "otpauth://hotp/foo?secret=GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ&algorithm=SHA1&digits=6")
         XCTAssertNotNil(urlc)
 
         var otp = OTP(urlc: urlc!)
